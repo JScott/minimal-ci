@@ -1,5 +1,6 @@
 require_relative 'payload'
 require_relative 'output'
+require 'fileutils'
 
 def verify_scripts(scripts)
   missing_scripts = scripts.reject do |script|

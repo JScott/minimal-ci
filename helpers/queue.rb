@@ -10,7 +10,7 @@ class RunScriptsWorker
   end
 end
 
-class ShortLogFormat < Logger::Formatter
+class ShortLogFormatter < Logger::Formatter
   def call(severity, time, program_name, message)
     "[#{time.utc}] #{severity} - #{message}"
   end

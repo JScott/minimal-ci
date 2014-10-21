@@ -1,2 +1,4 @@
-pid_file: /tmp/mci.pid
-log_file: /tmp/mci.log
+parser:
+  pid_file: /tmp/mci.pid
+  log_file: /tmp/mci.log
+  port: 8080

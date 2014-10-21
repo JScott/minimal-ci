@@ -1,6 +1,7 @@
 require_relative 'scripts'
 require_relative 'output'
 require 'yaml'
+require 'sinatra'
 
 def read_config(relative_path)
   current_dir = File.expand_path File.dirname(__FILE__)

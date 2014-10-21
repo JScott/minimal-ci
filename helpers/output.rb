@@ -1,16 +1,15 @@
-require 'logger'
 require 'colorize'
+require 'sinatra'
+require 'logger'
 
 def throw_error(string)
   throw :error, "! #{string}".red
 end
 
 def puts_info(string)
-  $stdout.puts "> #{string}".light_blue
-  $stdout.flush
+  logger.info "> #{string}".light_blue
 end
 
 def puts_script(string)
-  $stdout.puts string
-  $stdout.flush
+  logger.info string
 end

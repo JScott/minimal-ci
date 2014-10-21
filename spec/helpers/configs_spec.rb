@@ -15,12 +15,12 @@ describe "helper/configs.rb" do
     before(:all) do
       @config = read_config @config_path
     end
-    it 'redirects STDOUT and STDERR to a given file' do
-      skip "Redirecting STDOUT causes issues with RSpec"
-      set_log_file @config
+    it 'redirects logger output to a given file' do
+      skip 'Having logging problems right now'
+      set_log_file @config['parser']['log_file']
       string = 'hi'
-      puts string
-      expect(File.read @config['log_file']).to equal string
+      logger.info string
+      expect(File.read @config['parser']['log_file']).to match string
     end
   end
   describe 'set_pid_file' do
@@ -28,8 +28,8 @@ describe "helper/configs.rb" do
       @config = read_config @config_path
     end
     it 'creates a PID file with the PID of this script' do
-      set_pid_file @config
-      expect(File.read @config['pid_file']).to eq Process.pid.to_s
+      set_pid_file @config['parser']['pid_file']
+      expect(File.read @config['parser']['pid_file']).to eq Process.pid.to_s
     end
   end
   describe 'get_job_data' do

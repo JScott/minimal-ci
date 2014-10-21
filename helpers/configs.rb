@@ -7,19 +7,10 @@ def read_config(relative_path)
   YAML.load_file "#{current_dir}/../#{relative_path}"
 end
 
-def set_log_file(config)
-  # TODO: use logger instead of whatever this is
-  unless config['log_file'].nil?
-    puts_info "Log file: #{config['log_file']}"
-    log_path = config['log_file']
-    log = File.new log_path, 'a+'
-    STDOUT.reopen log
-    STDOUT.sync = true
-    STDERR.reopen log
-    STDERR.sync = true
-  else
-    puts_info "No log file specified, using STDOUT"
-  end
+def set_log_file(path)
+  file = File.new(path, 'a+')
+  file.sync = true
+  use Rack::CommonLogger, path
 end
 
 def set_pid_file(config)

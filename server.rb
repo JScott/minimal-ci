@@ -8,9 +8,9 @@ require_relative 'helpers/configs'
 require_relative 'helpers/queue'
 
 configure do
-  server_config = read_config 'config.yaml'
-  #set_log_file server_config
-  set_pid_file server_config
+  config = read_config 'config.yaml'
+  set_log_file config['parser']['log_file'] || '/var/log/mci/parser.log'
+  set_pid_file config['parser']['pid_file'] || '/var/run/mci/parser.pid'
   set :port, server_config['port'] || 8080
   set :bind, '0.0.0.0'
   set :jobs, get_job_data('./jobs') 

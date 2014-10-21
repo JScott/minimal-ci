@@ -8,17 +8,6 @@ describe 'helper/scripts.rb' do
     @some_data = payload_data['bitbucket']
   end
 
-  describe 'verify_scripts' do
-    it 'does nothing if the scripts are available' do
-      scripts = ["spec/data/scripts/hello-world"]
-      expect { verify_scripts scripts }.to_not raise_error
-    end
-    it 'raises an exception if the scripts are not found' do
-      scripts = ["these-scripts/do-not-exist"]
-      expect { verify_scripts scripts }.to raise_error
-    end
-  end
-
   describe 'from_workspace' do
     before(:all) do
       @job = 'test-job'

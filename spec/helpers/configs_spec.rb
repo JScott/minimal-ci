@@ -38,12 +38,6 @@ describe "helper/configs.rb" do
       expect(jobs.count).to eq 2
       expect(jobs['two']).to_not be_nil
     end
-    it 'verifies the integrity of that data' do
-      pending "Need to fix script verification methods first"
-      expect {
-        get_job_data './spec/data/jobs/invalid'
-      }.to throw_symbol(:error)
-    end
   end
   describe 'reject_job' do
     it 'throws an error' do

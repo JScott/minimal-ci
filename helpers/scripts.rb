@@ -2,16 +2,6 @@ require_relative 'payload'
 require_relative 'output'
 require 'fileutils'
 
-def verify_scripts(scripts)
-  missing_scripts = scripts.reject do |script|
-    current_dir = File.expand_path File.dirname(__FILE__)
-    File.exists? "#{current_dir}/../#{script}"
-  end
-  unless missing_scripts.empty?
-    throw_error "Stopping. Couldn't find scripts to run:\n#{missing_scripts}"
-  end
-end
-
 def from_workspace(job, logger=Logger.new(STDOUT))
   path = workspace_path_for job
   logger.info "Working from '#{path}' for '#{job}'"

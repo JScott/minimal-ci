@@ -24,7 +24,7 @@ end
 
 def run(cmd)
   user = @config['run_as']
-  cmd = "sudo -u #{user} -- #{cmd}" if user
+  cmd = "sudo -u #{user} -- bash -c '#{cmd}'" if user
   puts cmd
   IO.popen(cmd) do |io|
     io.each do |line|

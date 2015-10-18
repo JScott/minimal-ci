@@ -15,7 +15,7 @@ describe 'helper/scripts.rb' do
     end
     it 'raises an exception if the scripts are not found' do
       scripts = ["these-scripts/do-not-exist"]
-      expect { verify_scripts scripts }.to raise_error
+      expect { verify_scripts scripts }.to raise_error(UncaughtThrowError)
     end
   end
 
@@ -34,15 +34,15 @@ describe 'helper/scripts.rb' do
 
   describe 'workspace_path_for' do
     it 'returns the workspace path for a job' do
-      expect(workspace_path_for 'test-job').to match /workspaces\/test-job/
+      expect(workspace_path_for 'test-job').to match(/workspaces\/test-job/)
     end
   end
 
   describe 'run_script' do
     before(:all) do
-      CURRENT_DIR = File.expand_path File.dirname(__FILE__)
-      @hello_script = "#{CURRENT_DIR}/../data/scripts/hello-world"
-      @env_script = "#{CURRENT_DIR}/../data/scripts/hello-env"
+      current_dir = File.expand_path File.dirname(__FILE__)
+      @hello_script = "#{current_dir}/../data/scripts/hello-world"
+      @env_script = "#{current_dir}/../data/scripts/hello-env"
     end
     before(:each) do
       @logger = double 'logger'
@@ -70,11 +70,11 @@ describe 'helper/scripts.rb' do
 
   describe 'run_scripts' do
     before(:all) do
-      CURRENT_DIR = File.expand_path File.dirname(__FILE__)
+      current_dir = File.expand_path File.dirname(__FILE__)
       @job_name = 'test-job'
       @scripts = [
-        "#{CURRENT_DIR}/../data/scripts/hello-world",
-        "#{CURRENT_DIR}/../data/scripts/hello-file"
+        "#{current_dir}/../data/scripts/hello-world",
+        "#{current_dir}/../data/scripts/hello-file"
       ]
     end
     it 'calls run_script on all scripts' do

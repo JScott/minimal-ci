@@ -27,5 +27,5 @@ def configure_queue
 end
 
 def enqueue_scripts(*params)
-  RunScriptsWorker.perform_async *params  
+  RunScriptsWorker.perform_async(*params)
 end

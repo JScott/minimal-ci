@@ -2,6 +2,8 @@ require_relative 'scripts'
 require_relative 'output'
 require 'yaml'
 
+String.disable_colorization = false
+
 def read_config(relative_path)
   current_dir = File.expand_path File.dirname(__FILE__)
   YAML.load_file "#{current_dir}/../#{relative_path}"

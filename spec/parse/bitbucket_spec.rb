@@ -26,7 +26,7 @@ describe BitbucketPayload do
     end
 
     it 'parses the source URL' do
-      expect(@payload.source_url).to eq 'https://bitbucket.org/marcus/project-x/src/620ade18607ac42d872b568bb92acaa9a28620e9/?at=master'
+      expect(@payload.source_url).to eq 'https://bitbucket.org/marcus/project-x/commits/620ade18607ac42d872b568bb92acaa9a28620e9/?at=master'
     end
 
     it 'casts to hash for environment variables purposes' do
@@ -37,7 +37,7 @@ describe BitbucketPayload do
         'CI_GIT_BRANCH' => 'master',
         'CI_GIT_MESSAGE' => "Added some more things to somefile.py\n",
         'CI_GIT_REPO_SLUG' => 'marcus/project-x',
-        'CI_GIT_SOURCE_URL' => 'https://bitbucket.org/marcus/project-x/src/620ade18607ac42d872b568bb92acaa9a28620e9/?at=master'
+        'CI_GIT_SOURCE_URL' => 'https://bitbucket.org/marcus/project-x/commits/620ade18607ac42d872b568bb92acaa9a28620e9/?at=master'
       }
       expect(hash).to eq expected_hash
     end

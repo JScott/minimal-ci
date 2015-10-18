@@ -1,10 +1,13 @@
 require_relative 'output'
 require_relative '../parse/bitbucket'
+require_relative '../parse/gitlab'
 
 def parser_for(tool)
   case tool
   when 'bitbucket'
     BitbucketPayload
+  when 'gitlab'
+    GitlabPayload
   else
     throw_error "Stopping. No parser for tool:\n#{tool}"
   end

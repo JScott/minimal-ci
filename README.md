@@ -1,3 +1,9 @@
+# Check out [Robot Sweatshop](https://github.com/jscott/robot_sweatshop/) instead!
+
+This project was deprecated in early 2015 as it grew into a larger project, Robot Sweatshop. It's more comprehensive than MCI while maintaining the core design and philosophy.
+
+For posterity, here's the original readme:
+
 # mci
 
 I was using Jenkins as a glorified script runner, as I'm sure a lot of people are.

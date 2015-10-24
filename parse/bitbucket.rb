@@ -22,7 +22,7 @@ class BitbucketPayload
     self.latest_commit['raw_author']
   end
 
-  def hash
+  def commit_hash
     self.latest_commit['raw_node']
   end
 
@@ -42,13 +42,13 @@ class BitbucketPayload
   def source_url
     return '' if @data['canon_url'].nil? || self.repository.empty? || self.latest_commit.empty?
     base_url = @data['canon_url']
-    "#{base_url}/#{self.repo_slug}/commits/#{self.hash}/?at=#{self.branch}"
+    "#{base_url}/#{self.repo_slug}/commits/#{self.commit_hash}/?at=#{self.branch}"
   end
 
   def to_hash
     {
       'CI_GIT_AUTHOR' => self.author,
-      'CI_GIT_HASH' => self.hash,
+      'CI_GIT_HASH' => self.commit_hash,
       'CI_GIT_BRANCH' => self.branch,
       'CI_GIT_MESSAGE' => self.message,
       'CI_GIT_REPO_SLUG' => self.repo_slug,

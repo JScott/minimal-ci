@@ -18,7 +18,7 @@ describe 'helper/payload.rb' do
       end
     end
     it 'throws an error if the tool is not supported' do
-      expect { parser_for '' }.to raise_error
+      expect { parser_for '' }.to raise_error(UncaughtThrowError)
     end
   end
   
@@ -33,7 +33,7 @@ describe 'helper/payload.rb' do
     end
     it 'raises an exception if the branch is not being watched' do
       branch_watchlist = ['develop']
-      expect { verify_payload @payload, branch_watchlist }.to raise_error
+      expect { verify_payload @payload, branch_watchlist }.to raise_error(UncaughtThrowError)
     end
   end
 end

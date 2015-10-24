@@ -17,7 +17,7 @@ class ShortLogFormat < Logger::Formatter
 end
 
 def configure_queue
-  Sidekiq.logger.formatter = ShortLogFormatter
+  Sidekiq.logger.formatter = ShortLogFormat
   Sidekiq.configure_client do |config|
     config.redis = { :namespace => 'mci', :size => 1 }
   end
@@ -27,5 +27,5 @@ def configure_queue
 end
 
 def enqueue_scripts(*params)
-  RunScriptsWorker.perform_async *params  
+  RunScriptsWorker.perform_async(*params)
 end

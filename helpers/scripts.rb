@@ -4,7 +4,7 @@ require_relative 'output'
 def verify_scripts(scripts)
   missing_scripts = scripts.reject do |script|
     current_dir = File.expand_path File.dirname(__FILE__)
-    File.exists? "#{current_dir}/../#{script}"
+    File.exist? "#{current_dir}/../#{script}"
   end
   unless missing_scripts.empty?
     throw_error "Stopping. Couldn't find scripts to run:\n#{missing_scripts}"

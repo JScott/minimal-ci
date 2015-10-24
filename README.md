@@ -25,6 +25,7 @@ Then hook into `url.com/:tool/payload-for/:job`. For example, `url.com/bitbucket
 
 Currently supported tools:
 - bitbucket
+- gitlab
 
 See ansible-role for an in-depth set up through ansible scripts.
 
